@@ -5,16 +5,19 @@
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
     <title>Page Title</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <link rel='stylesheet' type='text/css' media="screen" href="{{url_for('static', filename='css/main.css')}}"> 
+    <link rel='stylesheet' type='text/css' media="screen" href="{{url_for('static', filename='css/main.css')}}">
 </head>
 <body>
     <h1>Node.js 제목</h1>
-    <h2>{{user}}</h2>
     <p> 페이지입니다.</p>
-    <p>
-        유저아이디 : {{data.userid}}<br />
-        성별 : {{data.gender}}<br />
-        나이 :{{data.age}}<br />
-    </p> 
+    <!--<p>
+        유저아이디 : {#data.userid#}<br />
+        성별 : {#data.gender#}<br />
+        나이 :{#data.age#}<br />
+    </p> -->
+    <form action="/get" method="GET">
+        <input type="text" name="user"> <!-- input태그는 안닫아도된다 -->
+        <input type="submit" value="전송">
+    </form>
 </body>
 </html>

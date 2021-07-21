@@ -34,7 +34,7 @@ while True:
     key = cv2.waitKey(1)
     if key == ord('q'): break #q는 종료
     elif key == ord('c'): #c는 화면캡쳐
-        cv2.imwrite('./capture/img_{}.png'.format())
+        cv2.imwrite('./capture/img_{0}.png'.format(fileDateTime),frame)
         print('이미지 저장 완료')
     elif key == ord('r'):
         if(is_record==False):

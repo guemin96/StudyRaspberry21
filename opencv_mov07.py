@@ -48,7 +48,6 @@ diff_max = 10 # 영상 차이가 나는 최대픽셀수
 # 초기 프레임으로 사용할 프레임 최초 저장
 ret, frame_a = cap.read()
 ret, frame_b = cap.read()
-
 # 무한 루프 (q버튼을 입력할 때까지)
 while True:
     now = datetime.datetime.now()
@@ -58,6 +57,7 @@ while True:
     # 현재영상 입력
     ret, frame = cap.read() #카메라 현재 영상 로드, frame에 저장, return은 true/false
     h, w, _= frame.shape #Width, Channel은 불필요
+    
 
     if ret != True: break # return false면 루프 탈출
 

@@ -1,16 +1,18 @@
+import io
+import sys
 import folium
-from folium.plugins import HeatMap
-import json
-import webbrowser
-import os
+from PyQt5 import QtWidgets, QtWebEngineWidgets # PyQtWebEngine 추가 설치 -->QtWebEngineWidgets
 
-point_data =json.loads(open('./data/point.json', mode='r', encoding='utf-8').read())
-#point_data
-m2 = folium.Map(location=[36.505354, 127.704334], zoom_start=7, tiles='Cartodb Positron') # 위치를 잡아주는 코드
-HeatMap(point_data).add_to(m2)
+app = QtWidgets.QApplication(sys.argv)
 
-m2.save('./data/heatmap.html')
+m = folium.Map(location=[35.1175, 129.0903], zoom_start=12)
 
-chrome_path = 'C:/Program Files/Google/Chrome/Application/chrome.exe %s'
-print(os.getcwd())
-webbrowser.get(chrome_path).open(os.getcwd()+ '/data/heatmap.html')
+data = io.BytesIO()
+m.save(data, close_file=False)
+
+win = QtWebEngineWidgets.QWebEngineView()
+win.setHtml(data.getvalue().decode())
+win.resize(800,600)
+win.show()
+
+sys.exit(app.exec_())
